@@ -1,0 +1,23 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Stocks sample API",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eugeniogarcia/AngularExamples.git"
+  },
+  "keywords": [
+    "angular2"
+  ],
+  "author": "Eugenio",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "2.7.1",
+    "csv": "^1.1.0",
+    "dotenv": "^4.0.0",
+    "express": "4.13.1",
+    "google-finance": "0.1.12",
+    "request": "^2.88.0"
+  }
+}
