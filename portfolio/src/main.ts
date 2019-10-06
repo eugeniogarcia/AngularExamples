@@ -4,6 +4,11 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
+//Referencia al servicio de configuracion. No utiliza DI
+import { ConfigService } from './app/services/config.service';
+
+ConfigService.set('api', 'https://angular-in-action-portfolio.firebaseio.com/stocks.json');
+
 if (environment.production) {
   enableProdMode();
 }
