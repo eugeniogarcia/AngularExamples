@@ -1,0 +1,7 @@
+<!--Dos formas de comunicar componentes entre si. En un caso la comunicacion se hace en el template. Para eso especificamos el id del Children. En el otro caso el propio componente App "tiene consiciencia de los children que aloja", y crea un @ViewChild. En ambos casos tenemos que definir un evento para que podamos saber de lo que ha sucedido en el componente app-navbar-->
+<app-navbar (onRefresca)="refresca()" (onRefresh)="midashboard.generateData()"></app-navbar>
+<!--Vamos a alojar aqui el formulario modal de forma dinamica. El place holder lo llamamos cajadeAviso. Notese que no hemos espeficado ningun tipo de componente, podria alojar cualquier cosa-->
+<ng-template #cajadeAviso></ng-template>
+<!--Notese que especificamos un id para que podamos referenciar al objeto desde el script espeficado con uno de los eventos en el app-navbar-->
+<!--Pasamos como argumento de la funcion el evento, los datos del evento-->
+<app-dashboard #midashboard (alarma)="alarma($event)"></app-dashboard>
