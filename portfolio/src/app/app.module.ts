@@ -12,7 +12,9 @@ import { AlertComponent } from './alert/alert.component';
 
 import { LocalStorageService } from './services/local-storage.service';
 import { AccountService } from './services/account.service';
-import { HttpClientModule } from '@angular/common/http';
+//Importamos HTTP_INTERCEPTORS
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { StocksInterceptor } from './services/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,13 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
         LocalStorageService,
         CurrencyPipe,
-        AccountService
+        AccountService,
+        //Añadimos nuestro interceptor a la lista de interceptors que pudieran ya existir
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: StocksInterceptor,
+          multi:true
+        }
        ],
   bootstrap: [AppComponent]
 })
