@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-alert',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./alert.component.css']
 })
 export class AlertComponent {
-  constructor() { }
+  //Notese que aunque el servicio es privado, se puede acceder a el desde el template, señal de que el template es parte de la clase del componente
+  constructor(private servicio: AlertService) { }
 }

@@ -1,7 +1,8 @@
-<clr-alert [clrAlertType]="service.type" [clrAlertAppLevel]="true" *ngIf="service.show" (clrAlertClosedChange)="service.close()">
+<!--Referenciamos directamente el servicio que hemos inyectado en el componente-->
+<clr-alert [clrAlertType]="servicio.type" [clrAlertAppLevel]="true" *ngIf="servicio.show" (clrAlertClosedChange)="servicio.close()">
     <div clr-alert-item class="alert-item">
         <div class="alert-text">
-            {{service.message}}
+            {{servicio.message}}
         </div>
     </div>
 </clr-alert>

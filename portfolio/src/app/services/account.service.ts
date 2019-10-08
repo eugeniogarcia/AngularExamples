@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Stock } from './stocks.model';
 import { LocalStorageService } from './local-storage.service';
+import { AlertService } from './alert.service';
 
 const defaultBalance: number = 10000;
 
@@ -16,7 +17,8 @@ export class AccountService {
   get value(): number { return this._value; }
   get stocks(): Stock[] { return this._stocks; }
 
-  constructor(private localStorageService: LocalStorageService) { }
+  constructor(private localStorageService: LocalStorageService,
+    private alertService: AlertService) { }
 
   purchase(stock: Stock): void {
     stock = Object.assign({}, stock);
@@ -30,6 +32,11 @@ export class AccountService {
       this.calculateValue();
 
       this.cacheValues();
+
+      this.alertService.alert(`You bought ${stock.symbol} for $${stock.price}`, 'success');
+    }
+    else {
+      this.alertService.alert(`You have insufficient funds to buy ${stock.symbol}`, 'danger');
     }
   }
 
@@ -42,7 +49,13 @@ export class AccountService {
       this.calculateValue();
 
       this.cacheValues();
+
+      this.alertService.alert(`You sold ${stock.symbol} for $${stock.price}`,'success');
     }
+    else {
+      this.alertService.alert(`You do not own the ${stock.symbol} stock.`, 'danger');
+    }
+
   }
 
   //Este metodo no esta asociado a ningun live cycle hook. Se invoca desde el componente App
