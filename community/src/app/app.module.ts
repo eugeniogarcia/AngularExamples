@@ -16,8 +16,11 @@ import { UserService } from './services/user.service';
 //Para definir las rutas
 import { RouterModule, Routes } from '@angular/router';
 const appRoutes: Routes = [
+  //Apunta al componente de login
   { path: 'login', component: LoginComponent },
+  //Redirecciona a la ruta /forums. Este es un feature module
   { path: '', redirectTo: '/forums', pathMatch: 'full' },
+  //Se aplican las rutas en orden. Si llegamos aqui, muestra el componente de pagina no encontrada
   { path: '**', component: NotFoundComponent },
 ];
 
@@ -34,6 +37,7 @@ const appRoutes: Routes = [
     FormsModule,
     BrowserAnimationsModule,
     ClarityModule.forRoot(),
+    //Feature module que queremos utilizar
     ForumsModule,
     //Cargamos el modulo con las rutas
     RouterModule.forRoot(appRoutes)

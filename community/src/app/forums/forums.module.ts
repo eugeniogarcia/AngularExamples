@@ -11,6 +11,12 @@ import { ThreadsComponent } from './threads/threads.component';
 
 import { ForumsService } from './services/forums.service';
 
+//Soporte para la definicion de rutas dentro del feature module
+import { RouterModule, Routes } from '@angular/router';
+const forumsRoutes: Routes = [
+  { path: 'forums', component: ForumsComponent }
+];
+
 @NgModule({
   declarations: [
     ForumComponent,
@@ -23,6 +29,8 @@ import { ForumsService } from './services/forums.service';
     FormsModule,
     HttpModule,
     ClarityModule.forChild(),
+    //Añade las rutas a utilizar dentro del feature module
+    RouterModule.forChild(forumsRoutes),
   ],
   providers: [
     ForumsService
