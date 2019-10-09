@@ -178,9 +178,9 @@
       }
     },
     "@angular/router": {
-      "version": "5.0.0-beta.6",
-      "resolved": "https://registry.npmjs.org/@angular/router/-/router-5.0.0-beta.6.tgz",
-      "integrity": "sha1-ZpBRL/+TWA8RMQP9Ll7STevyMYc=",
+      "version": "5.2.11",
+      "resolved": "https://registry.npmjs.org/@angular/router/-/router-5.2.11.tgz",
+      "integrity": "sha512-NT8xYl7Vr3qPygisek3PlXqNROEjg48GXOEsDEc7c8lDBo3EB9Tf328fWJD0GbLtXZNhmmNNxwIe+qqPFFhFAA==",
       "requires": {
         "tslib": "^1.7.1"
       }
@@ -3031,7 +3031,7 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "inherits": "2.0.3"
+            "inherits": "~2.0.0"
           }
         },
         "boom": {
@@ -3040,7 +3040,7 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "hoek": "2.16.3"
+            "hoek": "2.x.x"
           }
         },
         "brace-expansion": {
@@ -3049,7 +3049,7 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "balanced-match": "0.4.2",
+            "balanced-match": "^0.4.1",
             "concat-map": "0.0.1"
           }
         },
@@ -3083,7 +3083,7 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "delayed-stream": "1.0.0"
+            "delayed-stream": "~1.0.0"
           }
         },
         "concat-map": {
@@ -3110,7 +3110,7 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "boom": "2.10.1"
+            "boom": "2.x.x"
           }
         },
         "dashdash": {
@@ -3119,7 +3119,7 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "assert-plus": "1.0.0"
+            "assert-plus": "^1.0.0"
           },
           "dependencies": {
             "assert-plus": {
@@ -3207,10 +3207,10 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "graceful-fs": "4.1.11",
-            "inherits": "2.0.3",
-            "mkdirp": "0.5.1",
-            "rimraf": "2.6.1"
+            "graceful-fs": "^4.1.2",
+            "inherits": "~2.0.0",
+            "mkdirp": ">=0.5 0",
+            "rimraf": "2"
           }
         },
         "fstream-ignore": {
@@ -3219,9 +3219,9 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "fstream": "1.0.11",
-            "inherits": "2.0.3",
-            "minimatch": "3.0.4"
+            "fstream": "^1.0.0",
+            "inherits": "2",
+            "minimatch": "^3.0.0"
           }
         },
         "gauge": {
@@ -3230,14 +3230,14 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "aproba": "1.1.1",
-            "console-control-strings": "1.1.0",
-            "has-unicode": "2.0.1",
-            "object-assign": "4.1.1",
-            "signal-exit": "3.0.2",
-            "string-width": "1.0.2",
-            "strip-ansi": "3.0.1",
-            "wide-align": "1.1.2"
+            "aproba": "^1.0.3",
+            "console-control-strings": "^1.0.0",
+            "has-unicode": "^2.0.0",
+            "object-assign": "^4.1.0",
+            "signal-exit": "^3.0.0",
+            "string-width": "^1.0.1",
+            "strip-ansi": "^3.0.1",
+            "wide-align": "^1.1.0"
           }
         },
         "getpass": {
@@ -3246,7 +3246,7 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "assert-plus": "1.0.0"
+            "assert-plus": "^1.0.0"
           },
           "dependencies": {
             "assert-plus": {
@@ -3263,12 +3263,12 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "fs.realpath": "1.0.0",
-            "inflight": "1.0.6",
-            "inherits": "2.0.3",
-            "minimatch": "3.0.4",
-            "once": "1.4.0",
-            "path-is-absolute": "1.0.1"
+            "fs.realpath": "^1.0.0",
+            "inflight": "^1.0.4",
+            "inherits": "2",
+            "minimatch": "^3.0.4",
+            "once": "^1.3.0",
+            "path-is-absolute": "^1.0.0"
           }
         },
         "graceful-fs": {
@@ -3334,8 +3334,8 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "once": "1.4.0",
-            "wrappy": "1.0.2"
+            "once": "^1.3.0",
+            "wrappy": "1"
           }
         },
         "inherits": {
@@ -3490,15 +3490,15 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "mkdirp": "0.5.1",
-            "nopt": "4.0.1",
-            "npmlog": "4.1.0",
-            "rc": "1.2.1",
-            "request": "2.81.0",
-            "rimraf": "2.6.1",
-            "semver": "5.3.0",
-            "tar": "2.2.1",
-            "tar-pack": "3.4.0"
+            "mkdirp": "^0.5.1",
+            "nopt": "^4.0.1",
+            "npmlog": "^4.0.2",
+            "rc": "^1.1.7",
+            "request": "^2.81.0",
+            "rimraf": "^2.6.1",
+            "semver": "^5.3.0",
+            "tar": "^2.2.1",
+            "tar-pack": "^3.4.0"
           }
         },
         "nopt": {
@@ -3517,10 +3517,10 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "are-we-there-yet": "1.1.4",
-            "console-control-strings": "1.1.0",
-            "gauge": "2.7.4",
-            "set-blocking": "2.0.0"
+            "are-we-there-yet": "~1.1.2",
+            "console-control-strings": "~1.1.0",
+            "gauge": "~2.7.3",
+            "set-blocking": "~2.0.0"
           }
         },
         "number-is-nan": {
@@ -3547,7 +3547,7 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "wrappy": "1.0.2"
+            "wrappy": "1"
           }
         },
         "os-homedir": {
@@ -3673,7 +3673,7 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "glob": "7.1.2"
+            "glob": "^7.0.5"
           }
         },
         "safe-buffer": {
@@ -3781,9 +3781,9 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "block-stream": "0.0.9",
-            "fstream": "1.0.11",
-            "inherits": "2.0.3"
+            "block-stream": "*",
+            "fstream": "^1.0.2",
+            "inherits": "2"
           }
         },
         "tar-pack": {
@@ -3792,14 +3792,14 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "debug": "2.6.8",
-            "fstream": "1.0.11",
-            "fstream-ignore": "1.0.5",
-            "once": "1.4.0",
-            "readable-stream": "2.2.9",
-            "rimraf": "2.6.1",
-            "tar": "2.2.1",
-            "uid-number": "0.0.6"
+            "debug": "^2.2.0",
+            "fstream": "^1.0.10",
+            "fstream-ignore": "^1.0.5",
+            "once": "^1.3.3",
+            "readable-stream": "^2.1.4",
+            "rimraf": "^2.5.1",
+            "tar": "^2.2.1",
+            "uid-number": "^0.0.6"
           }
         },
         "tough-cookie": {
@@ -3859,7 +3859,7 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "string-width": "1.0.2"
+            "string-width": "^1.0.2"
           }
         },
         "wrappy": {

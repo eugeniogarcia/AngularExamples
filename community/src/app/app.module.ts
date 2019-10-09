@@ -13,6 +13,14 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 import { UserService } from './services/user.service';
 
+//Para definir las rutas
+import { RouterModule, Routes } from '@angular/router';
+const appRoutes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/forums', pathMatch: 'full' },
+  { path: '**', component: NotFoundComponent },
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +35,8 @@ import { UserService } from './services/user.service';
     BrowserAnimationsModule,
     ClarityModule.forRoot(),
     ForumsModule,
+    //Cargamos el modulo con las rutas
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     UserService
