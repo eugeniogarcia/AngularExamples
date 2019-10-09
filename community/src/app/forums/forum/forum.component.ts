@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, Params } from '@angular/router';
 import { ForumsService } from '../services/forums.service';
 import { Forum } from '../services/data';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 
 @Component({
   selector: 'app-forum',
@@ -11,8 +11,21 @@ import { Forum } from '../services/data';
 export class ForumComponent implements OnInit {
   forum: Forum;
 
-  constructor(private forumsService: ForumsService) { }
+  constructor(
+    //Servicio que nos permite inspeccionar la ruta activa
+    private route: ActivatedRoute,
+    //Serivio que gestiona rutas
+    private router: Router,
+    private forumsService: ForumsService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    //Se subscribe a la lista de parametros de la ruta actual
+    this.route.params.subscribe((params: Params) => {
+      //Obtiene el parametro forum_alias...
+      this.forum = this.forumsService.forum(params['forum_alias']);
+      //... pero si no lo encuentra, navega hasta el componente not-found
+      if (!this.forum) this.router.navigate(['/not-found']);
+    });
+  }
 
 }

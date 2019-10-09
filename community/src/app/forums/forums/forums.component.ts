@@ -15,4 +15,5 @@ export class ForumsComponent implements OnInit {
   ngOnInit() {
     this.forums = this.forumsService.forums;
   }
+
 }

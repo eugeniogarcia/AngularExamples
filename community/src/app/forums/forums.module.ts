@@ -14,7 +14,9 @@ import { ForumsService } from './services/forums.service';
 //Soporte para la definicion de rutas dentro del feature module
 import { RouterModule, Routes } from '@angular/router';
 const forumsRoutes: Routes = [
-  { path: 'forums', component: ForumsComponent }
+  { path: 'forums', component: ForumsComponent },
+  //Añade ruta con parametro
+  { path: 'forums/:forum_alias', component: ForumComponent }
 ];
 
 @NgModule({
