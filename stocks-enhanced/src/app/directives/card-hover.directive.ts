@@ -1,3 +1,4 @@
+//Directiva de tipo atributo
 import { Directive, ElementRef, OnInit, HostListener } from '@angular/core';
 
 @Directive({
@@ -9,6 +10,7 @@ export class CardHoverDirective implements OnInit {
   constructor(private el: ElementRef) {}
 
   ngOnInit() {
+    //Captura el elemento de clase CSS .mdl-card
     this.card = this.el.nativeElement.querySelector('.mdl-card');
 
     if (this.card.classList.contains('increase')) {
@@ -20,11 +22,13 @@ export class CardHoverDirective implements OnInit {
     }
   }
 
+  //Nos subscribimos al evento mouseover
   @HostListener('mouseover') onMouseOver() {
     this.card.style.boxShadow = '2px 2px 1px #999';
     this.card.style.top = '-2px';
   }
 
+  //Nos subscribimos al evento mouseout
   @HostListener('mouseout') onMouseOut() {
     this.card.style.boxShadow = '';
     this.card.style.top = '';

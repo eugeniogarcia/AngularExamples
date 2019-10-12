@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 let stocks: Array<string> = ['AAPL', 'GOOG', 'FB', 'AMZN', 'TWTR'];
@@ -17,21 +17,42 @@ export interface NewsInterface {
 }
 
 @Injectable()
-export class StocksService {
+export class StocksService{
 
-  constructor(private http: HttpClient) {}
+  private stocks_init: Array<string>;
+
+  constructor(private http: HttpClient) {
+    this.stocks_init=stocks;
+
+    var acc = localStorage.getItem("acciones");
+    if (acc) {
+      stocks = acc.split(",");
+    }
+    else {
+      localStorage.setItem("acciones", stocks.join(","));
+    }
+  }
 
   get() {
     return stocks;
   }
 
+  reset(){
+    stocks = this.stocks_init;
+    localStorage.setItem("acciones", stocks.join(","));
+  }
+
   add(stock) {
     stocks.push(stock);
+    localStorage.setItem("acciones", stocks.join(","));
+
     return this.get();
   }
 
   remove(stock) {
     stocks.splice(stocks.indexOf(stock), 1);
+    localStorage.setItem("acciones", stocks.join(","));
+    console.log(stocks.join(","));
     return this.get();
   }
 
@@ -42,5 +63,6 @@ export class StocksService {
   }
   getNewsSnapshot(source = 'the-wall-street-journal') {
     return this.http.get<NewsInterface>(service + '/stocks/news/snapshot?source=' + source);
-  }  
+  }
+
 }

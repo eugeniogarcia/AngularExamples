@@ -3,9 +3,11 @@ import { StocksService } from '../services/stocks.service';
 
 @Pipe({
   name: 'news',
+  //Es un pipe que no es stateless
   pure: false
 })
 export class NewsPipe implements PipeTransform {
+  //Estado
   cachedSource: string = '';
   news: string = 'loading...';
 

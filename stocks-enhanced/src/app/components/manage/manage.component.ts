@@ -17,10 +17,16 @@ export class ManageComponent {
 
   add() {
     this.symbols.push(this.stock.toUpperCase());
+    this.service.add(this.stock.toUpperCase());
     this.stock = '';
   }
 
   remove(symbol) {
     this.symbols = this.service.remove(symbol);
+    this.service.remove(this.stock.toUpperCase());
+  }
+
+  reset(){
+    this.service.reset();
   }
 }
