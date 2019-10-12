@@ -14,6 +14,10 @@ import { ForumsService } from './services/forums.service';
 //Soporte para la definicion de rutas dentro del feature module
 import { RouterModule, Routes } from '@angular/router';
 const forumsRoutes: Routes = [
+  //Estas rutas se añaden a las definidas en el App module.
+
+  //En forum Component, en esa ruta consideramos un nivel de anidacion mas, el de Thread. En este caso para poder ver los threads, o un thread concreto primero hay que navegar a un componente
+
   { path: 'forums', component: ForumsComponent },
   //Añade ruta con parametro, y apunta al componente Forum, singular
   { path: 'forums/:forum_alias', component: ForumComponent,
@@ -27,6 +31,7 @@ const forumsRoutes: Routes = [
 ];
 
 @NgModule({
+  //Declara los componentes incluidos en el feature module
   declarations: [
     ForumComponent,
     ForumsComponent,
@@ -38,7 +43,7 @@ const forumsRoutes: Routes = [
     FormsModule,
     HttpModule,
     ClarityModule.forChild(),
-    //Añade las rutas a utilizar dentro del feature module
+    //Añade las rutas a utilizar dentro del feature module. Estas rutas se añadiran a las definidas en el App module
     RouterModule.forChild(forumsRoutes),
   ],
   providers: [
