@@ -9,7 +9,8 @@
         <div class="header-nav">
             <!--Añadimos un link a la ruta Forums-->
             <a class="nav-link" routerLink="forums"><span class="nav-text">Forums</span></a>
-            <a class="nav-link"><span class="nav-text">Blogs</span></a>
+            <!--Esta ruta tiene asociado el modulo Blogs que se carga de forma lazy. las rutas definidas en ese modulo se añade a las nuestras-->>
+            <a class="nav-link" routerLink="/blogs"><span class="nav-text">Blogs</span></a>
         </div>
         <div class="header-actions">
             <!--Especificamos que queremos usar un outlet secundario, el que tiene nombre chat, y ahi, la ruta sera users-->

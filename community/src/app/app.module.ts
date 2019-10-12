@@ -29,6 +29,8 @@ const appRoutes: Routes = [
   {
     path: 'users', component: ChatListComponent, outlet: 'chat', canActivate:[AuthGuardService]},
   { path: 'users/:username', component: ChatComponent, outlet: 'chat', },
+  //Utiliza lazy loading para cargar el modulo Blogs. El modulo esta en el archivo app/blogs/blogs.module, y el modulo se llama BlogsModule
+  { path: 'blogs', loadChildren: 'app/blogs/blogs.module#BlogsModule' },
   //Redirecciona a la ruta /forums. Este es un feature module
   { path: '', redirectTo: '/forums', pathMatch: 'full' },
   //Se aplican las rutas en orden. Si llegamos aqui, muestra el componente de pagina no encontrada
@@ -48,7 +50,7 @@ const appRoutes: Routes = [
     FormsModule,
     BrowserAnimationsModule,
     ClarityModule.forRoot(),
-    //Feature module que queremos utilizar
+    //Feature module que queremos utilizar. Las rutas definidas en el feature module Blogs no las cargamos porque las vamos a cargar de forma lazy
     ForumsModule,
     //Cargamos el modulo con las rutas
     RouterModule.forRoot(appRoutes)
