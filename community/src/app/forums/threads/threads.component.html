@@ -1,18 +1,20 @@
 <div class="content-container">
-  <div class="content-area">
-    <table class="table" *ngIf="threads">
-      <tr>
-        <th>Thread</th>
-        <th>User</th>
-        <th>Last Post</th>
-        <th>Posts</th>
-      </tr>
-      <tr *ngFor="let thread of threads">
-        <td>{{thread.title}}</td>
-        <td>{{thread.posts[0].username}}</td>
-        <td>{{thread.posts[0].timestamp | date:'medium'}}</td>
-        <td>{{thread.posts.length}}</td>
-      </tr>
-    </table>
-  </div>
+    <div class="content-area">
+        <!--Muestra solo si hay threads-->
+        <table class="table" *ngIf="threads">
+            <tr>
+                <th>Thread</th>
+                <th>User</th>
+                <th>Last Post</th>
+                <th>Posts</th>
+            </tr>
+            <!--Añade el alias de forma relativa - esto sucede cuando usamos un bind [] -, de modo que la url resultante apunta a un Thread concreto-->
+            <tr *ngFor="let thread of threads" [routerLink]="[thread.alias]"></tr>>
+            <td>{{thread.title}}</td>
+            <td>{{thread.posts[0].username}}</td>
+            <td>{{thread.posts[0].timestamp | date:'medium'}}</td>
+            <td>{{thread.posts.length}}</td>
+            </tr>
+        </table>
+    </div>
 </div>

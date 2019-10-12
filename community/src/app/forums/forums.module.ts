@@ -15,8 +15,15 @@ import { ForumsService } from './services/forums.service';
 import { RouterModule, Routes } from '@angular/router';
 const forumsRoutes: Routes = [
   { path: 'forums', component: ForumsComponent },
-  //Añade ruta con parametro
-  { path: 'forums/:forum_alias', component: ForumComponent }
+  //Añade ruta con parametro, y apunta al componente Forum, singular
+  { path: 'forums/:forum_alias', component: ForumComponent,
+    //Añadimos rutas children a esta ruta. Esto nos permitira definir un segundo outlet dentro de este modulo donde poder mostrar estas rutas children
+    children: [
+      //El root. Correspondera con forums/:forum_alias
+      { path: '', component: ThreadsComponent },
+      { path: ':thread_alias', component: ThreadComponent }
+    ]
+  }
 ];
 
 @NgModule({
