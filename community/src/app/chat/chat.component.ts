@@ -17,15 +17,26 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   constructor(
     private chatBotService: ChatBotService,
-    private userService: UserService) { }
+    private userService: UserService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.params.subscribe((params: Params) => {
+      this.messages = [];
+      this.user = this.userService.getUser();
+      this.guest = params['username'];
+    });
+  }
 
   ngAfterViewChecked() {
     this.scrollToBottom();
   }
 
-  close() {}
+  close() {
+    //Programaticamente navegamos a un outlet secundaria llamado chat, con la ruta users
+    this.router.navigate([{ outlets: { chat: 'users' } }]);
+  }
 
   onKeyUp(event) {
     if (event.keyCode == 13) {
