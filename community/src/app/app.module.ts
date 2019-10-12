@@ -18,6 +18,9 @@ import { RouterModule, Routes } from '@angular/router';
 const appRoutes: Routes = [
   //Apunta al componente de login
   { path: 'login', component: LoginComponent },
+  //Especificamos un outlet secundaro. En este caso, el que tiene el nombre chat
+  { path: 'users', component: ChatListComponent, outlet: 'chat', },
+  { path: 'users/:username', component: ChatComponent, outlet: 'chat', },
   //Redirecciona a la ruta /forums. Este es un feature module
   { path: '', redirectTo: '/forums', pathMatch: 'full' },
   //Se aplican las rutas en orden. Si llegamos aqui, muestra el componente de pagina no encontrada

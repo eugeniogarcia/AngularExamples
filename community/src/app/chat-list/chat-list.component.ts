@@ -11,11 +11,15 @@ export class ChatListComponent implements OnInit {
   users: any[];
   talkTo: string;
 
-  constructor(private forumsService: ForumsService) { }
+  constructor(private forumsService: ForumsService,
+    private enrutador:Router) { }
 
   ngOnInit() {
     this.users = this.forumsService.users;
   }
 
-  close() {}
+  close() {
+    //Programaticamente navegamos a un outlet secundaria llamado chat, con la ruta null
+    this.enrutador.navigate([{ outlets: { chat: null } }]);
+  }
 }

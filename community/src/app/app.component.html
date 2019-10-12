@@ -12,7 +12,8 @@
             <a class="nav-link"><span class="nav-text">Blogs</span></a>
         </div>
         <div class="header-actions">
-            <a class="nav-link nav-icon">
+            <!--Especificamos que queremos usar un outlet secundario, el que tiene nombre chat, y ahi, la ruta sera users-->
+            <a class="nav-link nav-icon" [routerLink]="[{outlets: { chat: ['users']}}]">
                 <clr-icon shape="talk-bubbles"></clr-icon>
             </a>
             <a class="nav-link nav-icon">
@@ -27,3 +28,5 @@
         </div>
     </div>
 </clr-main-container>
+<!--Añadimos un outlet secundario. Tiene un nombre, de modo que podemos apuntar especificamente a el-->
+<router-outlet name="chat"></router-outlet>
