@@ -1,0 +1,38 @@
+<div *tdLoading="'customer'">
+    <!--Definimos un formulario. Le damos el nombre form, y especificamos el metodo submit-->
+    <form *ngIf="customer" #form="ngForm" (ngSubmit)="save()">
+        <md-card>
+            <md-card-header>Edit Customer</md-card-header>
+            <md-card-content>
+                <md-input-container>
+                    <!--Especificamos que se trata de un mdInput. Es parte del formulario, ngModel, es requerido - usamos la validacion nativa de html5 -, y le damos el nombre name-->
+                    <input name="customer" mdInput placeholder="Customer Name" [(ngModel)]="customer.name" required #name="ngModel">
+                    <!--Espacio para mostrar errores. Usamos las propiedades de validacion del componente, que en este caso se llama name. Comprobamos que se haya dado el foco al campo y luego se haya perdido - touched -, y que no sea un valor valido - required. Otra cosa a destacar es que aquellos controles que no sean validos tendran aplicada un clase automaticamente, ng-invalid-->
+                    <md-error *ngIf="name.touched && name.invalid">
+                        Name is required
+                    </md-error>
+                </md-input-container>
+                <md-input-container>
+                    <input name="email" mdInput type="email" placeholder="Email" [(ngModel)]="customer.email" required #email="ngModel">
+                    <md-error *ngIf="email.touched && email.invalid">
+                        A valid email is required
+                    </md-error>
+                </md-input-container>
+                <md-input-container>
+                    <!--Hemos definido una directiva custom llamada phone para validar. Notese como efectivamente cuando mostramos errores, buscamos si hay errores en telefono. Notese como usamos el ? porque no sabemos si habra o no errors-->
+                    <input name="phone" mdInput type="tel" placeholder="Phone" [(ngModel)]="customer.phone" required phone #phone="ngModel">
+                    <md-error *ngIf="phone.touched && phone.errors?.telefono">
+                        Not a valid phone number
+                    </md-error>
+                </md-input-container>
+            </md-card-content>
+            <md-card-actions>
+                <!--En este caso la anotacion es md-button-->
+                <button type="button" md-button (click)="delete()" *ngIf="customer.id">Delete</button>
+                <button type="button" md-button (click)="cancel()">Cancel</button>
+                <!--Interesante. Hacemos un bind a la propiedad disabled-->
+                <button type="submit" md-raised-button color="primary" [disabled]="form.invalid">Save</button>
+            </md-card-actions>
+        </md-card>
+    </form>
+</div>
