@@ -6,16 +6,19 @@ import { HoursValidator } from '../validators/hours.validator';
   selector: 'app-hours-control',
   templateUrl: './hours-control.component.html',
   styleUrls: ['./hours-control.component.css'],
-  providers: [{ 
+  providers: [{
+    //Registra el componente como un FormControl, de modo que sera tenido en cuenta para Angular pueda acceder mas tarde
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => HoursControlComponent),
     multi: true
-  }, { 
+  }, {
+    //Registra el control para que Angular pueda acceder a sus validators
     provide: NG_VALIDATORS,
     useExisting: forwardRef(() => HoursControlComponent),
     multi: true
   }]
 })
+//Para implementar un control custom hay que implementar este interface
 export class HoursControlComponent implements ControlValueAccessor {
 
   hours = 0;
@@ -43,12 +46,13 @@ export class HoursControlComponent implements ControlValueAccessor {
     return this.validateFn(control);
   }
 
+  //Los metodos que siguen son parte del interface
   writeValue(value: any) {
     if (value !== undefined) {
       this.hours = value;
     }
   }
-  
+
   registerOnChange(fn) {
     this.onChange = fn;
   }

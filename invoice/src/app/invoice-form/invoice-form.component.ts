@@ -25,14 +25,18 @@ export class InvoiceFormComponent implements OnInit {
     private router: Router,
     private dialogService: TdDialogService,
     private customersService: CustomersService,
+    //Servicio para crear formularios React
     private formBuilder: FormBuilder,
     private route: ActivatedRoute) {
 
+      //Utiliza elservicio formBuilder para crear un formulario. El argumento es un objeto con las propiedades que estaran disponibles en el formulario. Para cada propiedad se incluye una lista, array, de validator functions. Tambien indicamos el valor por defecto del componente, si alguno
+      //EL formulario React se denomina FormGroup, asi que lo que estamos creando es tecnicamente a FormGroup
       this.invoiceForm = this.formBuilder.group({
         id: [''],
         service: ['', Validators.required],
         customerId: ['', Validators.required],
         rate: ['', Validators.required],
+        //Utiliza nuestra directiva de validacion, HoursValidation
         hours: ['', [Validators.required, HoursValidator]],
         date: ['', Validators.required],
         paid: ['']
@@ -40,6 +44,7 @@ export class InvoiceFormComponent implements OnInit {
 
     }
 
+  //Una vez se ha construido el componente, lo inicializamos...
   ngOnInit() {
     this.loadingService.register('invoice');
     this.loadingService.register('customers');
@@ -49,9 +54,11 @@ export class InvoiceFormComponent implements OnInit {
       this.loadingService.resolve('customers');
     });
 
+    //Carga los invoices
     this.route.params.map((params: Params) => params.invoiceId).subscribe(invoiceId => {
       if (invoiceId) {
         this.invoicesService.get<Invoice>(invoiceId).subscribe(invoice => {
+          //Especifica un valor. EL objeto debe contener key values que correspondan con la estructura del FormGroup
           this.invoiceForm.setValue(invoice);
           this.invoice = invoice;
           this.loadingService.resolve('invoice');
@@ -62,7 +69,9 @@ export class InvoiceFormComponent implements OnInit {
       }
     });
 
+    //Observese como se utiliza el caracter stream de este tipo de forumlarios. Nos subscribimos a dos fuentes, la propiedad rate y la propiedad hours. Combina en un solo observable los dos streams. Calcula el total
     Observable.combineLatest(
+      //Podemos recuperar los valores de una de las propiedades con un Observable. Tambien hay otro metodo que recupera la informacion de forma sincrona, this.invoiceForm.get('rate').value
       this.invoiceForm.get('rate').valueChanges,
       this.invoiceForm.get('hours').valueChanges
     ).subscribe(([rate = 0, hours = 0]) => {
@@ -72,6 +81,7 @@ export class InvoiceFormComponent implements OnInit {
 
   save() {
     if (this.invoice.id) {
+      //Recupera todo el FormGroup
       this.invoicesService.update<Invoice>(this.invoice.id, this.invoiceForm.value).subscribe(response => {
         this.viewInvoice(response.id);
       });
