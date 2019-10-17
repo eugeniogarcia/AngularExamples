@@ -7,6 +7,7 @@ import { SummaryComponent } from './summary.component';
 import { CardTypeDirective } from '../../directives/card-type.directive';
 import { ChangePipe } from '../../pipes/change.pipe';
 
+//En este ejemplo tenemos un componente que tiene animaciones. Para hacer el test nos interesa quitar las animaciones para no tener que andar pomniendo delays, etc.
 describe('SummaryComponent', () => {
   let component: SummaryComponent;
   let fixture: ComponentFixture<SummaryComponent>;
@@ -15,13 +16,14 @@ describe('SummaryComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
+        //Importamos este modulo, que en esencia nos proporciona versiones de las animaciones que no hacen nada
         NoopAnimationsModule
       ],
       declarations: [
         SummaryComponent,
         ChangePipe,
         CardTypeDirective,
-      ], 
+      ],
       providers: [
         CurrencyPipe,
         PercentPipe
