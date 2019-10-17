@@ -17,6 +17,7 @@ describe('DelayDirective', () => {
     TestBed.configureTestingModule({
       declarations: [
         MockComponent,
+        //En este caso no creamos la directiva "manualmente" como haciamos con el test de card-hover directive
         DelayDirective
       ]
     });

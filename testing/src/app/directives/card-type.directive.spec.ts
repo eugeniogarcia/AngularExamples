@@ -28,9 +28,11 @@ describe('CardTypeDirective', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
+        //Interesante. Creamos un componente para cada escenario que queremos probar
         MockComponent,
         MockPositiveComponent,
         MockNegativeComponent,
+        //En este caso no creamos la directiva "manualmente" como haciamos con el test de card-hover directive
         CardTypeDirective
       ]
     });
